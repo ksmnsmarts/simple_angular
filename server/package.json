@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "set NODE_ENV=development && nodemon server.js",
+    "prod": "set NODE_ENV=production && nodemon server.js",
+    "linux-test": "export NODE_ENV=development && nodemon server.js",
+    "linux-prod": "export NODE_ENV=production && nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "http": "0.0.1-security",
+    "mongodb": "^4.8.0",
+    "mongoose": "^6.4.4",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.19"
+  }
+}

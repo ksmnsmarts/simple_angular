@@ -1,0 +1,34 @@
+<div>
+    <h3>To do list</h3>
+
+    <div class="todoList_container">
+        <div class="form">
+            <form [formGroup]="todoForm" class="example-form">
+				<input type="text" placeholder="할 일" formControlName="todo">
+				<button type="submit" (click)="addTodo()">할일 추가</button>
+			</form>
+        </div>
+
+        <div *ngFor="let item of todoData" >
+            --------------------------------------------------------------------------------------
+            <li class="list">
+                <span style="width: 150px;">{{item.todo}} </span>
+                <button (click)="editBtn(item._id)">할 일 수정</button>
+                &nbsp;&nbsp;&nbsp;
+                [ &nbsp;
+                <button type="checkbox" (click)="addRxjs(item)">추가하기 (rxjs) </button>
+                &nbsp;
+                <button type="checkbox" (click)="removeRxjs(item)">제거하기 (rxjs) </button>
+                &nbsp; ]
+            </li>
+
+            <div  *ngIf="selector == item._id && flag" style="width: 150px;">
+                <form [formGroup]="editTodoForm">
+                    <input type="text" formControlName="editTodo" [(ngModel)]="item.todo">
+                    <button type="submit" (click)="editTodo(item._id)">저장</button>
+                </form>
+            </div>
+        </div>
+        --------------------------------------------------------------------------------------
+    </div>
+</div>
