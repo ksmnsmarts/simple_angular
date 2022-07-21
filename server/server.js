@@ -1,3 +1,5 @@
+const SocketIO = require("socket.io");
+
 const path = require('path');
 const express = require('express');
 const http = require('http');
@@ -36,7 +38,7 @@ app.use('/api/v1', require('./routes/api/v1'));
 app.use('/', express.static(path.join(__dirname, '/dist/client')));
 
 
-http.createServer(app).listen(app.get('port'), () => {
+const httpServer = http.createServer(app).listen(app.get('port'), () => {
     console.log(` 
     +---------------------------------------------+
     |                                                 
@@ -73,6 +75,32 @@ function normalizePort(val) {
 
     return false;
 }
+
+
+
+const wsServer = SocketIO(httpServer, {
+    path: '/socket',
+});
+
+/*---------------------------
+	Namespace
+----------------------------*/
+const socketEx = wsServer.of('/socket');
+
+
+/*-----------------------------------------------
+    webRTC Socket event handler
+-----------------------------------------------*/
+const socketHandler = require('./socketController/socketHandler');
+
+socketEx.on('connection', (socket) => {
+    socketHandler(socketEx, socket, app )
+});
+
+
+
+
+
 
 app.use(function (req, res) {
     console.log(`

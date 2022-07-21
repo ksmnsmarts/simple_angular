@@ -1,0 +1,22 @@
+.chatting {
+    width: 500px;
+    border: 0.5px solid gray;
+    height: 400px;
+}
+
+
+.roomInfoContainer {
+    height: 80px;
+    border-bottom: 0.5px solid gray;
+    overflow: auto;
+}
+
+.messageContainer {
+    height: 320px;
+    overflow: auto;
+}
+
+.roomInfo {
+    background-color: #ccc;
+}
+

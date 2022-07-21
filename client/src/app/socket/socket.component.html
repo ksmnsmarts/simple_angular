@@ -1,1 +1,35 @@
-<p>socket works!</p>
+<div>
+    <h3>1. 먼저 참가할 방 이름과 사용자 이름을 입력해주세요.</h3>
+    <div class="form">
+        <form [formGroup]="joinRoomForm" class="example-form">
+            <div>
+                <input type="text" placeholder="방 이름" formControlName="roomName">
+            </div>
+            <div>
+                <input type="text" placeholder="사용자 이름" formControlName="userName">
+            </div>
+            <button type="submit" (click)="joinRoom()" >참가</button>
+        </form>
+    </div>
+
+    <!-- [disabled]="flag" -->
+    
+    <h3>2. 채팅 시작</h3>
+    <form [formGroup]="messageForm" class="chattingForm">
+        <div>
+            <input type="text" placeholder="메시지" formControlName="message">
+        </div>
+        <button type="submit" (click)="sendMessage()">현재 참여 중인 방에 전송</button>
+        <button type="submit" (click)="sendMessageAll()">모든 방에 전송</button>
+    </form>
+    <div class="chatting">
+        <div class="roomInfoContainer">
+            <p class="roomInfo" *ngFor="let item of roomInfo">{{item.roomName}} 에 {{item.userName}} </p>
+        </div>
+        <div class="messageContainer" >
+            <p *ngFor="let item of message">[ {{item.userName}} ] :  {{item.message}}</p>
+        </div>
+        
+    </div>
+</div>
+
