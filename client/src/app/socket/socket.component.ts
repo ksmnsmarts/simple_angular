@@ -20,8 +20,6 @@ export class SocketComponent implements OnInit, OnDestroy {
 
     userName: string;
 
-    flag:boolean = false;
-
 
     constructor(
         private fb: FormBuilder,
@@ -76,8 +74,6 @@ export class SocketComponent implements OnInit, OnDestroy {
         this.socket.emit('join:room', data);
 
         this.joinRoomForm.reset();
-
-        this.flag = true;
     }
 
     // 같은 room에 있는 사람에게 메시지 전송
@@ -92,7 +88,7 @@ export class SocketComponent implements OnInit, OnDestroy {
         this.messageForm.reset();
     }
 
-
+    // 모든 roo에 있는 살마에게 메시지 전송
     sendMessageAll(): void {
         const data = {
             userName: this.userName,

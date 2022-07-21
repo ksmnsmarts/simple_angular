@@ -8,11 +8,9 @@
             <div>
                 <input type="text" placeholder="사용자 이름" formControlName="userName">
             </div>
-            <button type="submit" (click)="joinRoom()" >참가</button>
+            <button type="submit" (click)="joinRoom()">참가</button>
         </form>
     </div>
-
-    <!-- [disabled]="flag" -->
     
     <h3>2. 채팅 시작</h3>
     <form [formGroup]="messageForm" class="chattingForm">
