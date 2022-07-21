@@ -15,7 +15,7 @@ module.exports = function (socketEx, socket, app) {
 
         const roomData = {
             roomName: socket.roomName,
-            userName: '[ ' + socket.userName + ' ]' + '님이 입장하셨습니다.'
+            message: '[ ' + socket.userName + ' ]' + '님이 입장하셨습니다.'
         }
 
         console.log("\n server ---> client  [join:user]");
@@ -41,10 +41,10 @@ module.exports = function (socketEx, socket, app) {
 
 
     // disconnect
-    socket.on('disconnect', async function () {
+    socket.on('disconnect', async () => {
         const roomData = {
             roomName: socket.roomName,
-            userName: '[ ' + socket.userName + ' ]' + '님이 퇴장하셨습니다.'
+            message: '[ ' + socket.userName + ' ]' + '님이 퇴장하셨습니다.'
         }
 
         console.log("\n ---> disconnect", roomData.userName);

@@ -22,7 +22,7 @@
     </form>
     <div class="chatting">
         <div class="roomInfoContainer">
-            <p class="roomInfo" *ngFor="let item of roomInfo">{{item.roomName}} 에 {{item.userName}} </p>
+            <p class="roomInfo" *ngFor="let item of roomInfo">{{item.roomName}} 에 {{item.message}} </p>
         </div>
         <div class="messageContainer" >
             <p *ngFor="let item of message">[ {{item.userName}} ] :  {{item.message}}</p>
