@@ -1,11 +1,11 @@
-# simple_angular
+## simple_angular 구성
 
 ### 1. Todo list
 #### 기본적인 CRUD
 ----
 
 ### 2. file upload / download
-#### DB 를 사용하지 않는 가장 간단한 이미지 업로드 / 다운로드
+#### DB 를 사용하지 않고 웹서버에 저장한 이미지 업로드 / 다운로드
 ----
 
 ### 3. rxjs
