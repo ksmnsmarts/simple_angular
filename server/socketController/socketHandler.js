@@ -1,16 +1,16 @@
 module.exports = function (socketEx, socket, app) {
-	const dbModels = global.DB_MODELS;
 
-	// join room
-	socket.on('join:room', async (data) => {
-        if(socket.roomName) {
-            console.log("\n 속해 있던 room 탈퇴");
+    // join room
+    socket.on('join:room', async (data) => {
+        if (socket.roomName) {
+            console.log("\n 속해 있던 방이 있으면 해당 room 탈퇴");
             socket.leave(socket.roomName);
         }
-        
-        console.log("\n client ---> server  [join:room]");
+
         socket.roomName = data.roomName;
         socket.userName = data.userName;
+
+        console.log("\n client ---> server  [join:room]");
         socket.join(data.roomName);
 
         const roomData = {
@@ -20,10 +20,11 @@ module.exports = function (socketEx, socket, app) {
 
         console.log("\n server ---> client  [join:user]");
         socketEx.to(socket.roomName).emit('join:user', roomData)
-	});
+    });
+
 
     // 자신 포함 자신이 속한 room에 메세지 전송
-    socket.on('message:send', (data)=> {
+    socket.on('message:send', (data) => {
         console.log("\n client ---> server  [message:send]");
         data.userName = socket.userName
 
@@ -31,22 +32,26 @@ module.exports = function (socketEx, socket, app) {
         socketEx.to(socket.roomName).emit('message:receive', data)
     })
 
+
     // 자신 포함 모든 room에 메세지 전송
-    socket.on('message:sendAll', (data)=> {
+    socket.on('message:sendAll', (data) => {
         console.log("\n client ---> server  [message:sendAll]");
         socketEx.emit('message:receive', data)
     })
 
-	// disconnect
-	socket.on('disconnect', async function () {
+
+    // disconnect
+    socket.on('disconnect', async function () {
         const roomData = {
             roomName: socket.roomName,
             userName: '[ ' + socket.userName + ' ]' + '님이 퇴장하셨습니다.'
         }
 
-		console.log("\n ---> disconnect", roomData.userName);
+        console.log("\n ---> disconnect", roomData.userName);
         socketEx.to(socket.roomName).emit('disconnect:user', roomData)
-	});
+    });
+
+
 
     // socket.on('set:room', (roomInfo)=> {
     //     socket.leave(socket.roomName);
@@ -60,7 +65,4 @@ module.exports = function (socketEx, socket, app) {
     //     console.log(socketEx.adapter.rooms.get(roomInfo.roomName))
     //     console.log('-------------------------')
     // })
-
-
-    
 };

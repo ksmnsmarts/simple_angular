@@ -39,29 +39,33 @@ export class SocketComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+
+        // room에 참가한 user 정보
         this.socket.on('join:user', (data: any) => {
             console.log('server ---> client  [join:user]');
             this.roomInfo.push(data)
         })
 
-
+        // Receive Message
         this.socket.on('message:receive', (data: any) => {
             console.log('server ---> client  [message:receive]');
             this.message.push(data)
         })
 
+        // room에 탈퇴한 user 정보
         this.socket.on('disconnect:user', (data: any) => {
             console.log('server ---> client  [disconnect:user]');
             this.roomInfo.push(data)
         })
     }
 
+    // socket 종료
     ngOnDestroy() {
         this.socket.close()
     }
 
 
-    // 룸 참가
+    // room 참가
     joinRoom(): void {
         const data = {
             roomName: this.joinRoomForm.value.roomName,
@@ -88,7 +92,7 @@ export class SocketComponent implements OnInit, OnDestroy {
         this.messageForm.reset();
     }
 
-    // 모든 roo에 있는 살마에게 메시지 전송
+    // 모든 room에 있는 살마에게 메시지 전송
     sendMessageAll(): void {
         const data = {
             userName: this.userName,
