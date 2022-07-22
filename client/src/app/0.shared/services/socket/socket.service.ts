@@ -13,7 +13,8 @@ export class SocketService {
         // autoConnect: false 자동연결을 끄고
         // this._socket.open으로 수동으로 연결
         // 이렇게 하는 이유 : 뒤로 가기로 소켓연결을 끊었을 경우(socket.close()), 다시 컴포넌트 접속시 자동 연결이 안돼서 수동으로 바꿈
-        this._socket = io(this.url + '/socket', { transports: ['websocket'], path: '/socket', autoConnect: false });
+        this._socket = io(this.url + '/socket', { transports: ['websocket'], autoConnect: false });
+
     }
 
     get socket() {

@@ -78,15 +78,12 @@ function normalizePort(val) {
 
 
 
-const wsServer = SocketIO(httpServer, {
-    path: '/socket',
-});
+const wsServer = SocketIO(httpServer);
 
 /*---------------------------
 	Namespace
 ----------------------------*/
 const socketNameSpace = wsServer.of('/socket');
-
 
 /*-----------------------------------------------
     webRTC Socket event handler
@@ -95,6 +92,7 @@ const socketHandler = require('./socketController/socketHandler');
 
 socketNameSpace.on('connection', (socket) => {
     socketHandler(socketNameSpace, socket, app )
+
 });
 
 
