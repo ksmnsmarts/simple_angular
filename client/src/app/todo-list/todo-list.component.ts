@@ -85,6 +85,21 @@ export class TodoListComponent implements OnInit {
         })
     }
 
+    // 할 일 삭제
+    deleteBtn(_id: any) {
+        const data = {
+            _id: _id,
+        }
+
+        this.todoService.deleteTodo(data).subscribe((data: any) => {
+            if (data.message == 'success todo delete') {
+                this.getTodoList();
+            }
+        })
+    }
+
+
+
 
     // rxjs
     addRxjs(item) {

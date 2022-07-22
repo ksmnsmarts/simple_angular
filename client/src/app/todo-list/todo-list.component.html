@@ -13,7 +13,8 @@
             --------------------------------------------------------------------------------------
             <li class="list">
                 <span style="width: 150px;">{{item.todo}} </span>
-                <button (click)="editBtn(item._id)">할 일 수정</button>
+                <button (click)="editBtn(item._id)">수정</button>
+                <button (click)="deleteBtn(item._id)">삭제</button>
                 &nbsp;&nbsp;&nbsp;
                 [ &nbsp;
                 <button type="checkbox" (click)="addRxjs(item)">추가하기 (rxjs) </button>

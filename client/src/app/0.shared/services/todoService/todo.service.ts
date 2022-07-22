@@ -25,4 +25,9 @@ export class TodoService {
     editTodo(data: any){
         return this.http.post('/api/v1/todo/editTodo', data);
     }
+
+    // 할 일 삭제
+    deleteTodo(data: any){
+        return this.http.post('/api/v1/todo/deleteTodo', data);
+    }
 }

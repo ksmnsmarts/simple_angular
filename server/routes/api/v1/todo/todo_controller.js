@@ -101,3 +101,37 @@ exports.editTodo = async (req, res) => {
     }
 
 }
+
+
+
+// To do 삭제
+exports.deleteTodo = async (req, res) => {
+    console.log(`
+--------------------------------------------------
+  User Profile: req.decoded._id
+  router.post('/deleteTodo', todoController.deleteTodo);
+--------------------------------------------------`);
+
+    const dbModels = global.DB_MODELS;
+
+    const data = req.body;
+    // console.log(data)
+
+    try {
+        const findTodo = await dbModels.Todo.findOneAndDelete(
+            {
+                _id: data._id
+            }
+        )
+
+        return res.send({
+            message: 'success todo delete'
+        });
+
+
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('db Error');
+    }
+
+}
