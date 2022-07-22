@@ -3,7 +3,7 @@ import { Store } from './store';
 
 
 class InitRxjsInfo {
-    todoInfo = []; // {_id: '', checked: false}
+    todoInfo = [];
 }
 
 
@@ -29,7 +29,6 @@ export class RxjsService extends Store<any>{
     }
 
     removeRxjs(data: any) {
-
         const filter = this.state.todoInfo.filter(item=> item.todo != data.todo)
         this.setState({
             ...this.state, todoInfo: filter
