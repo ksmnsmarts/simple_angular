@@ -10,6 +10,8 @@ import { FileComponent } from './file/file.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { SocketComponent } from './socket/socket.component';
 import { GuardComponent } from './guard/guard.component';
+import { GuardTestComponent } from './guard-test/guard-test.component';
+import { AuthGuard } from './0.shared/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { GuardComponent } from './guard/guard.component';
     FileComponent,
     RxjsComponent,
     SocketComponent,
-    GuardComponent
+    GuardComponent,
+    GuardTestComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { GuardComponent } from './guard/guard.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
