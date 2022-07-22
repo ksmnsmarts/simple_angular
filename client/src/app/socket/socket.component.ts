@@ -41,8 +41,8 @@ export class SocketComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
 
         // room에 참가한 user 정보
-        this.socket.on('join:user', (data: any) => {
-            console.log('server ---> client  [join:user]');
+        this.socket.on('join:message', (data: any) => {
+            console.log('server ---> client  [join:message]');
             this.roomInfo.push(data)
         })
 
@@ -53,8 +53,8 @@ export class SocketComponent implements OnInit, OnDestroy {
         })
 
         // room에 탈퇴한 user 정보
-        this.socket.on('disconnect:user', (data: any) => {
-            console.log('server ---> client  [disconnect:user]');
+        this.socket.on('disconnect:message', (data: any) => {
+            console.log('server ---> client  [disconnect:message]');
             this.roomInfo.push(data)
         })
     }

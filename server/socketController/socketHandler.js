@@ -18,8 +18,8 @@ module.exports = function (socketEx, socket, app) {
             message: '[ ' + socket.userName + ' ]' + '님이 입장하셨습니다.'
         }
 
-        console.log("\n server ---> client  [join:user]");
-        socketEx.to(socket.roomName).emit('join:user', roomData)
+        console.log("\n server ---> client  [join:message]");
+        socketEx.to(socket.roomName).emit('join:message', roomData)
     });
 
 
@@ -47,8 +47,8 @@ module.exports = function (socketEx, socket, app) {
             message: '[ ' + socket.userName + ' ]' + '님이 퇴장하셨습니다.'
         }
 
-        console.log("\n ---> disconnect", roomData.userName);
-        socketEx.to(socket.roomName).emit('disconnect:user', roomData)
+        console.log("\n ---> disconnect", roomData.message);
+        socketEx.to(socket.roomName).emit('disconnect:message', roomData)
     });
 
 
