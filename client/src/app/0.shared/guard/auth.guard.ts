@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate, OnInit {
     ) { }
 
     ngOnInit() {
-        console.log('auth redirect oninit');
+        console.log('auth redirect onInit');
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

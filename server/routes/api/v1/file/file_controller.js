@@ -16,8 +16,6 @@ exports.getFileList = async (req, res) => {
 
         // imgs/ 폴더 내의 모든 파일의 이름을 가져온다
         fs.readdir(fileList, (err, files) => {
-            console.log(files);
-
             return res.send({
 				files
 			});
