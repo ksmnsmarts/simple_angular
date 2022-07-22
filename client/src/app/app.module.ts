@@ -9,6 +9,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { FileComponent } from './file/file.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { SocketComponent } from './socket/socket.component';
+import { GuardComponent } from './guard/guard.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SocketComponent } from './socket/socket.component';
     TodoListComponent,
     FileComponent,
     RxjsComponent,
-    SocketComponent
+    SocketComponent,
+    GuardComponent
   ],
   imports: [
     BrowserModule,

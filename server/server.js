@@ -85,7 +85,7 @@ const wsServer = SocketIO(httpServer, {
 /*---------------------------
 	Namespace
 ----------------------------*/
-const socketEx = wsServer.of('/socket');
+const socketNameSpace = wsServer.of('/socket');
 
 
 /*-----------------------------------------------
@@ -93,8 +93,8 @@ const socketEx = wsServer.of('/socket');
 -----------------------------------------------*/
 const socketHandler = require('./socketController/socketHandler');
 
-socketEx.on('connection', (socket) => {
-    socketHandler(socketEx, socket, app )
+socketNameSpace.on('connection', (socket) => {
+    socketHandler(socketNameSpace, socket, app )
 });
 
 

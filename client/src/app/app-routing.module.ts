@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FileComponent } from './file/file.component';
+import { GuardComponent } from './guard/guard.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { SocketComponent } from './socket/socket.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path: 'socket',
         component: SocketComponent,
+    },
+    {
+        path: 'guard',
+        component: GuardComponent,
     },
     // 잘못된 URL을 사용했을때 메인으로 보냄
     {
