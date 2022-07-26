@@ -17,4 +17,4 @@
 ----
 
 ### 5. guard
-#### token 유무를 이용하여 routing guard
+#### token 유무에 따라 routing guard
