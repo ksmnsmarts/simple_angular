@@ -41,6 +41,8 @@ exports.upload = async (req, res) => {
 
     const data = req.files[0]
 
+    console.log(data)
+
     try {
         const findFile = 'imgs/' + data.originalname;
 

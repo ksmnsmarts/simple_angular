@@ -12,9 +12,8 @@ export class FileComponent implements OnInit {
 
     imageSrc:any = '/assets/images/noimage.jpg';
 
-    @ViewChild('input') inputVar: ElementRef;
+    @ViewChild('fileInput') inputVar: ElementRef;
 
-    public fileData: File;
     uploadForm: FormGroup;
 
     fileList: any;
@@ -42,29 +41,24 @@ export class FileComponent implements OnInit {
     }
 
     // 파일 선택
-    onFileChange(fileData: any) {        
-        if (fileData.target.files.length > 0) {
-            this.fileData = fileData.target.files[0];
+    onFileChange(files: FileList) {        
+        if (files.length > 0) {
+            const file = files[0]
 
-            this.uploadForm.get('upload_file').setValue(this.fileData);
-
+            // 이미지 미리보기
             const reader = new FileReader();
-            reader.readAsDataURL(this.fileData);
+            reader.readAsDataURL(file);
             reader.onload = () => {
                 this.imageSrc = reader.result;
             };
         }
     }
 
-    onSubmit(file: any) {
-        this.uploadFile(file);
-    }
-
-
     // 업로드
-    uploadFile(file: any) {
+    onSubmit(files: FileList) {
         const formData = new FormData();
-        formData.append('upload_file', this.uploadForm.get('upload_file').value);
+        formData.append('upload_file', files[0]);
+        // console.log(formData.get('upload_file'))
 
         this.fileService.fileUpload(formData).subscribe((data: any)=> {
             if(data.message == 'success save') {
@@ -74,7 +68,6 @@ export class FileComponent implements OnInit {
             }
         })
     }
-
 
     // 다운로드
     download(fileName:any) {

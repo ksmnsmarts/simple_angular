@@ -1,13 +1,12 @@
 <div>
     <h3>File upload / download</h3>
 
-    <form [formGroup]="uploadForm" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-        <input #input ngf-select type="file" (change)="onFileChange($event)" name="upload_file" accept="image/*">
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit(fileInput.files)">
+        <input #fileInput ngf-select type="file" (change)="onFileChange(fileInput.files)" accept="image/*">
         <button type="submit">업로드</button>
         <div>
             <img *ngIf="imageSrc" [src]="imageSrc" class="img" style="width: 150px; height: 150px">
         </div>
-        
     </form>
 
     <div *ngFor="let item of fileList">
