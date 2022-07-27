@@ -14,3 +14,7 @@
 
 ### 4. socket
 #### socket을 이용한 간단한 채팅 (room 설정 / 해당 room emit / 모든 room emit)
+----
+
+### 5. guard
+#### token 유무에 따라 routing guard
