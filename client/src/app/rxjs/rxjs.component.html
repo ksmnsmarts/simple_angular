@@ -1,11 +1,23 @@
 <div>
     <h3>rxjs</h3>
+    <div class="rxjsContainer">
+        <div class="store">
+            <h4>store</h4>
+            <div *ngFor="let item of rxjsList">
+                <li>
+                    {{item.todo}} 
+                    <br>
+                </li>
+            </div>
+        </div>
 
-    <div *ngFor="let item of rxjsList">
-        <li>
-            {{item.todo}} 
-            <br>
-        </li>
+        <div class="eventBus">
+            <h4>eventBus</h4>
+            <div class="eventBus_wrap">
+                <button (click)="eventBusToggle()">Event Bus Button</button>
+                <h3>------->  {{eventBusBoolean}}</h3>
+            </div>
+        </div>
     </div>
 </div>
 

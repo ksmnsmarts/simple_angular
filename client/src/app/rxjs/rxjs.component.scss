@@ -1,0 +1,18 @@
+.rxjsContainer {
+    display: flex;
+    
+    .store {
+        border: 1px solid gray;
+        width: 250px;
+    }
+
+    .eventBus {
+        border: 1px solid gray;
+        width: 250px;
+    
+        .eventBus_wrap {
+            display: flex;
+        }
+    }
+}
+

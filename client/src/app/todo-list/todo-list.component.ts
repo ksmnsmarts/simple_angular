@@ -107,6 +107,7 @@ export class TodoListComponent implements OnInit {
             todo: item.todo
         }
 
+        console.log('rxjs [data ---add---> store]')
         this.rxjsService.addRxjs(data)
     }
 
@@ -115,6 +116,7 @@ export class TodoListComponent implements OnInit {
             todo: item.todo
         }
 
+        console.log('rxjs [store ---remove---> data]')
         this.rxjsService.removeRxjs(data)
     }
 
