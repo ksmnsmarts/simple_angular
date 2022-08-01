@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   socketUrl: 'http://localhost:3000',
+  tokenName: 'simple_angular'
 };
 
 /*

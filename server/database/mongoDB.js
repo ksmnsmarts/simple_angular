@@ -25,6 +25,7 @@ function createSchema() {
 	const dbModels = {};
 	
     dbModels.Todo = require('../models/todo_schema');
+    dbModels.User = require('../models/user_schema');
 
 	global.DB_MODELS = dbModels;
 }

@@ -12,6 +12,19 @@ import { SocketComponent } from './socket/socket.component';
 import { GuardComponent } from './guard/guard.component';
 import { GuardTestComponent } from './guard-test/guard-test.component';
 import { AuthGuard } from './0.shared/guard/auth.guard';
+import { AuthModule } from './auth/auth.module';
+
+
+import { JwtModule } from '@auth0/angular-jwt';
+
+// Env
+import { environment } from 'src/environments/environment';
+
+// Token
+export function tokenGetter() {
+	return localStorage.getItem(environment.tokenName);
+}
+
 
 @NgModule({
   declarations: [
@@ -28,7 +41,17 @@ import { AuthGuard } from './0.shared/guard/auth.guard';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule,
+    JwtModule.forRoot({
+        config: {
+          tokenGetter: tokenGetter,
+          disallowedRoutes: [
+            '/api/v1/auth/sign-in',
+                '/api/v1/auth/sign-up',
+          ]
+        }
+    })
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

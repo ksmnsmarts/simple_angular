@@ -1,0 +1,26 @@
+<div>
+    <h3>login / token</h3>
+
+    <div>
+        <h3>1. 회원가입</h3>
+        <button [routerLink]="['/auth/sign-up']">회원가입</button>
+    </div>
+    <hr>
+    <br>
+
+    <div>
+        <h3>2. 로그인</h3>
+        <div class="form">
+            <form [formGroup]="signInForm" class="example-form">
+                <div>
+                    <input type="text" placeholder="아이디" formControlName="id">
+                </div>
+                <div>
+                    <input type="password" placeholder="비밀번호" formControlName="password">
+                </div>
+                <button type="submit" (click)="signIn()" [disabled]="signInForm.invalid">로그인</button>
+            </form>
+        </div>
+        
+    </div>
+</div>

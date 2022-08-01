@@ -34,6 +34,11 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         component: GuardTestComponent,
     },
+    {
+		path: 'auth',
+        loadChildren: () => import(`./auth/auth.module`).then(m => m.AuthModule),
+	},
+    
     // 잘못된 URL을 사용했을때 메인으로 보냄
     {
         path: '**',
