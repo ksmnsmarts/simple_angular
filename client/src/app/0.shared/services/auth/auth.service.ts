@@ -33,8 +33,8 @@ export class AuthService {
 			shareReplay(),
 			tap( 
 			(res:any) => {
-                        console.log(res.token)
-						this.setToken(res.token)
+						this.setToken(res.token);
+                        console.log('[token]', res.token);
 					}),
 		)
 	}

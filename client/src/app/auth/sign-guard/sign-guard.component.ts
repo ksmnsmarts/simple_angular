@@ -31,7 +31,7 @@ export class SignGuardComponent implements OnInit {
                 this.getUserProfileData();
             }
 
-            console.log(this.authService.getTokenInfo());
+            console.log('[token info]', this.authService.getTokenInfo());
         })
     }    
 

@@ -28,7 +28,7 @@ exports.signUp = async (req, res) => {
         const user = await dbModels.User.findOne(criteria, projection);
 
         if (user) {
-            return res.status(409).send({
+            return res.status(200).send({
                 message: 'duplicated'
             })
         }
@@ -81,7 +81,7 @@ exports.signIn = async (req, res) => {
 		const isMatched = await user.comparePassword(req.body.password, user.password);
 
 		if(!isMatched) {
-			return res.status(404).send({ 
+			return res.status(200).send({ 
 				message: 'mismatch'
 			});
 		}

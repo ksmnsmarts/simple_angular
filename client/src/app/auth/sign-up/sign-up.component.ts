@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/0.shared/services/auth/auth.service';
 
@@ -18,9 +18,9 @@ export class SignUpComponent implements OnInit {
         private authService: AuthService
     ) {
         this.signUpForm = this.fb.group({
-            id: [''],
-            password: [''],
-            name: [''],
+            id: ['', [Validators.required]],
+            password: ['', [Validators.required]],
+            name: ['', [Validators.required]],
         });
     }
 
@@ -43,9 +43,11 @@ export class SignUpComponent implements OnInit {
             password: this.signUpForm.value.password,
             name: this.signUpForm.value.name
         }
-        console.log(data)
+        
         this.authService.signUp(data).subscribe((data: any)=> {
-            
+            if(data.message == 'duplicated') {
+                alert('아이디 중복')
+            }
         })
     }
 

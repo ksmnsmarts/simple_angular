@@ -35,7 +35,6 @@ export class SignInComponent implements OnInit {
         }
     }
 
-
     // 로그인
     signIn() {
         const data = {
@@ -43,7 +42,12 @@ export class SignInComponent implements OnInit {
             password: this.signInForm.value.password,
         }
         this.authService.signIn(data).subscribe((data: any)=> {
-            this.router.navigate(['/auth/sign-guard']);
+            console.log(data)
+            if(data.message == 'mismatch') {
+                alert('아이디/비밀번호 오류')
+            } else {
+                this.router.navigate(['/auth/sign-guard']);
+            }
         })
     }
 

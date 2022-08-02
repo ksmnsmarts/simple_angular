@@ -15,7 +15,7 @@
                 <div>
                     <input type="password" placeholder="비밀번호" formControlName="password">
                 </div>
-                <button type="submit" (click)="signUp()">가입하기</button>
+                <button type="submit" [disabled]="signUpForm.invalid" (click)="signUp()">가입하기</button>
             </form>
         </div>
         
