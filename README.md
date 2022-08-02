@@ -18,3 +18,9 @@
 
 ### 5. guard
 #### token 유무에 따라 routing guard
+----
+
+### 6. log-in
+#### 회원가입 시 암호 해싱 / token 발행 / routing guard
+
+
