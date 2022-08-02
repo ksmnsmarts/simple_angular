@@ -42,7 +42,7 @@ const httpServer = http.createServer(app).listen(app.get('port'), () => {
     console.log(` 
     +---------------------------------------------+
     |                                                 
-    |      [ Potatocs Server ]
+    |      [ Simple_anger Server ]
     |
     |      - Version:`, process.env.VERSION, `
     |
