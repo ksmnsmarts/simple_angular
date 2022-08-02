@@ -22,6 +22,7 @@ export class DataService extends Store<any>{
         this.setState({
             ...this.state, ...data
         });
+        console.log(this.state)
     }
 
 }
