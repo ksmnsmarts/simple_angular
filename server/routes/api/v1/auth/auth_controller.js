@@ -91,7 +91,6 @@ exports.signIn = async (req, res) => {
 			name: user.name,
 		};
 
-        // 5 minute = 5 * 60
 		const jwtOption = {
 			expiresIn: '1d'
 		};

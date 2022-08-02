@@ -11,7 +11,6 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { SocketComponent } from './socket/socket.component';
 import { GuardComponent } from './guard/guard.component';
 import { GuardTestComponent } from './guard-test/guard-test.component';
-import { AuthGuard } from './0.shared/guard/auth.guard';
 import { AuthModule } from './auth/auth.module';
 
 
@@ -19,6 +18,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 // Env
 import { environment } from 'src/environments/environment';
+import { LocalStorageGuard } from './0.shared/guard/localStorage.guard';
+import { AuthGuard } from './0.shared/guard/auth.guard';
 
 // Token
 export function tokenGetter() {
@@ -53,7 +54,7 @@ export function tokenGetter() {
         }
     })
   ],
-  providers: [AuthGuard],
+  providers: [LocalStorageGuard, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

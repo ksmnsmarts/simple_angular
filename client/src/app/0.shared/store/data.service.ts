@@ -19,7 +19,6 @@ export class DataService extends Store<any>{
     }
 
     setUserProfile(data: any): void {
-        console.log(data)
         this.setState({
             ...this.state, ...data
         });

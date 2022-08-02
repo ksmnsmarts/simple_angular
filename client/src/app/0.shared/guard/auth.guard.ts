@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth/auth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -9,6 +10,7 @@ export class AuthGuard implements CanActivate, OnInit {
 
     constructor(
         private router: Router,
+        private authService: AuthService,
     ) { }
 
     ngOnInit() {
@@ -17,17 +19,31 @@ export class AuthGuard implements CanActivate, OnInit {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         try {
-            const token = localStorage.getItem('token');
+            const routePath = route.routeConfig.path;
 
-            // 토큰이 존재하면 이미 라우팅 된 페이지로 그대로 진행
-            if (token) {
+            if (!this.authService.isAuthenticated()) {
+                if (routePath == 'auth' || routePath == 'sign-up') {
+                    return true;
+                } else {
+                    alert('토큰 없음\n로그인 시 해당 페이지로 redirect 됩니다.')
+                    this.router.navigate(['auth'], { queryParams: { 'redirectURL': state.url } });
+                }
                 return true;
-            }
-            // 토큰이 없으면 튕겨내기
-            else {
-                alert('Guard !!!')
-                this.router.navigate(['/guard']);
-                return true;
+            } else {
+                /*---------------------------------------------------------------------------
+                * 이 부분에서 토큰 유무를 판단해 토큰이 있으면 해당 url로 routing 시켰으나
+                * 예제에서는 /auth path가 하나로 묶어 만들었기 때문에
+                * sign-in, sign-up component에서 토큰 유무에 따라 routing 시켰음.
+                ---------------------------------------------------------------------------*/
+                if (routePath == 'auth') {
+                    this.router.navigate(['auth/sign-guard']);
+                    return true;
+                } else if (routePath == 'auth/sign-up') {
+                    this.router.navigate(['auth/sign-guard']);
+                    return true;
+                } else {
+                    return true;
+                }
             }
         } catch (error) {
 

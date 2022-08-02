@@ -26,11 +26,8 @@ export class AuthService {
 	signUp(userData) {
 		return this.http.post('/api/v1/auth/signUp', userData);
 	}
-    signUp1() {
-		return this.http.get('/api/v1/auth/signUp1');
-	}
 
-	signIn(userData): Observable<Token> {
+    signIn(userData): Observable<Token> {
 		return this.http.post<Token>('/api/v1/auth/signIn', userData)
 		.pipe(
 			shareReplay(),
