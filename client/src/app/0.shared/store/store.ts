@@ -33,7 +33,8 @@ export class Store<T> {
 	setState(nextState: T): void {
         /*----------------------------
         *       next()
-        * 받아 온 새 값을 얻는다.
+        * 이 메서드는 숫자, 문자열, 개체 등과 같은 값을 보냅니다.
+        * https://www.tutorialspoint.com/rxjs/rxjs_observables.htm
         ----------------------------*/
 		this._state$.next(nextState);
 	}
