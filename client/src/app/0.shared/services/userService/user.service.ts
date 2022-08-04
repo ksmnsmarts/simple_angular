@@ -14,15 +14,19 @@ export class UserService {
     ) { }
 
     // 유저 정보 가져오기
+    // https://www.learnrxjs.io/learn-rxjs/operators/utility/do
     getUserProfile() {
 		return this.http.get('/api/v1/user/getUserProfile')
 		.pipe(
-			tap( 
-				(res: any) => {
+			tap({ 
+				next: (res: any) => {
 					this.dataService.setUserProfile(res);
 					return res.result = true;
-				}
-			)
+				},
+                error: (error)=>{
+                    console.log(error);
+                }
+			})
 		);
 	}    
 }
