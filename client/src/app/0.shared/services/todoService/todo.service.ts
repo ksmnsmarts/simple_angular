@@ -30,4 +30,22 @@ export class TodoService {
     deleteTodo(data: any){
         return this.http.post('/api/v1/todo/deleteTodo', data);
     }
+
+
+    // ----------------------todo aggregate-------------------------------------
+    // 모든 목록 가져오기
+    aggregate_getAllTodo() {
+        return this.http.get('/api/v1/aggregateTodo/aggregate_getAllTodo');
+    }
+
+    // 내 목록 가져오기
+    aggregate_getMyTodo() {
+        return this.http.get('/api/v1/aggregateTodo/aggregate_getMyTodo');
+    }
+
+    // 할 일 등록
+    aggregate_addTodo(data:any) {
+        return this.http.post('/api/v1/aggregateTodo/aggregate_addTodo', data);
+    }
+    
 }

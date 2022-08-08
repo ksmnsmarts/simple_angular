@@ -47,6 +47,9 @@ export class SignUpComponent implements OnInit {
         this.authService.signUp(data).subscribe((data: any)=> {
             if(data.message == 'duplicated') {
                 alert('아이디 중복')
+            } else {
+                alert('가입 완료')
+                this.router.navigate(['/auth/sign-guard']);
             }
         })
     }

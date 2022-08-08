@@ -26,6 +26,7 @@ function createSchema() {
 	
     dbModels.Todo = require('../models/todo_schema');
     dbModels.User = require('../models/user_schema');
+    dbModels.AggregateTodo = require('../models/aggregateTodo_schema');
 
 	global.DB_MODELS = dbModels;
 }
