@@ -98,7 +98,7 @@ exports.signIn = async (req, res) => {
 		const token = jwt.sign(payload, process.env.JWT_SECRET, jwtOption);
 
 		/*------------------------------------------
-			5. send token and profile info to client
+        *   send token and profile info to client
 		--------------------------------------------*/
 		res.send({
 			token

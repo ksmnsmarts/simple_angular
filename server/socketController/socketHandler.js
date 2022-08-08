@@ -1,7 +1,7 @@
 module.exports = function (socketNameSpace, socket, app) {
 
     /*----------------------------------
-    * join room
+    *  join room
     ----------------------------------*/
     socket.on('join:room', async (data) => {
 
@@ -33,7 +33,7 @@ module.exports = function (socketNameSpace, socket, app) {
 
 
     /*----------------------------------
-    * 자신 포함 자신이 속한 room에 메세지 전송
+    *  자신 포함 자신이 속한 room에 메세지 전송
     ----------------------------------*/
     socket.on('message:send', (data) => {
         console.log("\n client ---> server  [message:send]");
@@ -45,7 +45,7 @@ module.exports = function (socketNameSpace, socket, app) {
 
 
     /*----------------------------------
-    * 자신 포함 모든 room에 메세지 전송
+    *  자신 포함 모든 room에 메세지 전송
     ----------------------------------*/
     socket.on('message:sendAll', (data) => {
         console.log("\n client ---> server  [message:sendAll]");
@@ -54,7 +54,7 @@ module.exports = function (socketNameSpace, socket, app) {
 
 
     /*----------------------------------
-    * disconnect
+    *  disconnect
     ----------------------------------*/
     socket.on('disconnect', async () => {
         const roomData = {

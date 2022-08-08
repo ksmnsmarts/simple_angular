@@ -26,7 +26,7 @@ const user_Schema = mongoose.Schema(
 
 
 /*-------------------------------------------
-*  plain text password를 hashing
+*   plain text password를 hashing
 -------------------------------------------*/ 
 user_Schema.pre('save', function(next){
     var user = this;
@@ -46,7 +46,7 @@ user_Schema.pre('save', function(next){
 
 
 /*-------------------------------------------
-* hashing된 password를 받아온 plain text password와 비교
+*   hashing된 password를 받아온 plain text password와 비교
 -------------------------------------------*/ 
 user_Schema.methods.comparePassword = function (password, hash) {
 	return new Promise((resolve, reject) => {
