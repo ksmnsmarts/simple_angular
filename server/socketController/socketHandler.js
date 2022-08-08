@@ -1,9 +1,17 @@
 module.exports = function (socketNameSpace, socket, app) {
 
-    // join room
+    /*----------------------------------
+    * join room
+    ----------------------------------*/
     socket.on('join:room', async (data) => {
+
+        // 속해 있던 방이 있으면 해당 room 탈퇴
         if (socket.roomName) {
-            console.log("\n 속해 있던 방이 있으면 해당 room 탈퇴");
+            const roomData = {
+                roomName: socket.roomName,
+                message: '[ ' + socket.userName + ' ]' + '님이 퇴장하셨습니다.'
+            }
+            socketNameSpace.to(socket.roomName).emit('disconnect:message', roomData)
             socket.leave(socket.roomName);
         }
 
@@ -11,6 +19,7 @@ module.exports = function (socketNameSpace, socket, app) {
         socket.userName = data.userName;
 
         console.log("\n client ---> server  [join:room]");
+        // join room
         socket.join(data.roomName);
 
         const roomData = {
@@ -23,7 +32,9 @@ module.exports = function (socketNameSpace, socket, app) {
     });
 
 
-    // 자신 포함 자신이 속한 room에 메세지 전송
+    /*----------------------------------
+    * 자신 포함 자신이 속한 room에 메세지 전송
+    ----------------------------------*/
     socket.on('message:send', (data) => {
         console.log("\n client ---> server  [message:send]");
         data.userName = socket.userName
@@ -33,14 +44,18 @@ module.exports = function (socketNameSpace, socket, app) {
     })
 
 
-    // 자신 포함 모든 room에 메세지 전송
+    /*----------------------------------
+    * 자신 포함 모든 room에 메세지 전송
+    ----------------------------------*/
     socket.on('message:sendAll', (data) => {
         console.log("\n client ---> server  [message:sendAll]");
         socketNameSpace.emit('message:receive', data)
     })
 
 
-    // disconnect
+    /*----------------------------------
+    * disconnect
+    ----------------------------------*/
     socket.on('disconnect', async () => {
         const roomData = {
             roomName: socket.roomName,
