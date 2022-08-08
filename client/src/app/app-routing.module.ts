@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './0.shared/guard/auth.guard';
 import { LocalStorageGuard } from './0.shared/guard/localStorage.guard';
 import { FileComponent } from './file/file.component';
 import { GuardTestComponent } from './guard-test/guard-test.component';
@@ -10,7 +11,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 
 const routes: Routes = [
     { 
-        path: 'todoList',
+        path: 'auth/todoList',
+        canActivate: [AuthGuard],
         component: TodoListComponent,
     },
     {

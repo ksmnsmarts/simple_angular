@@ -6,8 +6,8 @@
             <form [formGroup]="todoForm" class="example-form">
 				<input type="text" placeholder="할 일" formControlName="todo">
 				<button type="submit" (click)="addTodo()" [disabled]="todoForm.invalid">할일 추가</button>
-                <button (click)="getAllTodo()">모든 목록 보기</button>
-                <button (click)="getMyTodo()">내 목록 보기</button>
+                <button (click)="getAllTodo()">모든 할 일 보기</button>
+                <button (click)="getMyTodo()">내 할 일 보기</button>
 			</form>
         </div>
 

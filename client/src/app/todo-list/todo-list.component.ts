@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable,  } from 'rxjs';
+import { AuthService } from '../0.shared/services/auth/auth.service';
 import { TodoService } from '../0.shared/services/todoService/todo.service';
 import { RxjsService } from '../0.shared/store/rxjs.service';
 
@@ -25,7 +27,9 @@ export class TodoListComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private todoService: TodoService,
-        private rxjsService: RxjsService
+        private rxjsService: RxjsService,
+        private authService: AuthService,
+        private router: Router
     ) {
         this.todoForm = this.fb.group({
             todo: ['', [Validators.required]]
@@ -39,6 +43,10 @@ export class TodoListComponent implements OnInit {
 
 
     ngOnInit(): void {
+        if(this.authService.isAuthenticated()){
+            // this.router.navigate(['todoList']);
+        }
+
         this.getAllTodo();
     }
 
