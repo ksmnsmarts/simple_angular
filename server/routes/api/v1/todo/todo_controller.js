@@ -61,7 +61,7 @@ exports.getMyTodo = async (req, res) => {
                 *   $lookup 시 $match 하여 나온 값에 filed 가 추가되어 하나의 결과로 나옴.
                 ---------------------------------------------*/
                 $lookup: {
-                    from: 'todos',     // 참조할 collection
+                    from: 'todos',              // 참조할 collection
                     localField: '_id',          // $match되어 나온 결과 중 비교할 filed
                     foreignField: 'userId',     // 참조할 collection의 filed 
                     as: 'myTodo'                // $match되어 나온 결과에 추가될 filed의 이름 지정
