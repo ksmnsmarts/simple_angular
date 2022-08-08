@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit {
         * sign-in, sign-up component에서 토큰 유무에 따라 routing 함.
         ---------------------------------------------------------------------------*/
         if(this.authService.isAuthenticated()){
-            this.router.navigate(['auth/sign-guard']);
+            this.router.navigate(['auth/user']);
         }
 
         /*---------------------------------------------------------------------------
@@ -61,7 +61,7 @@ export class SignInComponent implements OnInit {
             } else if(this.params.redirectURL != '' && this.params.redirectURL != null && data.token != '' && data.token != null ){
                 this.router.navigate([`${this.params.redirectURL}`]);
             } else {
-                this.router.navigate(['/auth/sign-guard']);
+                this.router.navigate(['/auth/user']);
             } 
         })
     }

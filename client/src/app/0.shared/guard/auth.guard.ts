@@ -41,10 +41,10 @@ export class AuthGuard implements CanActivate, OnInit {
                 * sign-in, sign-up component에서 토큰 유무에 따라 routing 시켰음.
                 ---------------------------------------------------------------------------*/
                 if (routePath == 'auth') {
-                    this.router.navigate(['auth/sign-guard']);
+                    this.router.navigate(['auth/user']);
                     return true;
                 } else if (routePath == 'auth/sign-up') {
-                    this.router.navigate(['auth/sign-guard']);
+                    this.router.navigate(['auth/user']);
                     return true;
                 } else {
                     return true;
