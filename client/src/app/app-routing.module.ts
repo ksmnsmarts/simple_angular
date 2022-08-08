@@ -11,7 +11,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 
 const routes: Routes = [
     { 
-        path: 'auth/todoList',
+        path: 'todoList',
         canActivate: [AuthGuard],
         component: TodoListComponent,
     },

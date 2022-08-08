@@ -39,7 +39,7 @@ export class SignInComponent implements OnInit {
 
         /*---------------------------------------------------------------------------
         *       redirect
-        * token이 없을 때 todo List로 갔을 경우 Guard.
+        * token이 없을 때 todo List로 routing 한 경우 Guard.
         * Guard의  queryParams에 객체를 추가해 해당 rout path를 가지고 있으며 
         * singIn() 함수 실행 시 params.key 를 이용하여 해당 경로로 redirect 시킴.
         ---------------------------------------------------------------------------*/

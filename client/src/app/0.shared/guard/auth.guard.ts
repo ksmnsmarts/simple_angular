@@ -29,7 +29,6 @@ export class AuthGuard implements CanActivate, OnInit {
                     *           redirect
                     * // Navigate to /results?page=1
                     * this.router.navigate(['/results'], { queryParams: { page: 1 } });
-                    * --- ex) ---> /results/1
                     ---------------------------------------------------------------------------*/
                     alert('토큰 없음\n로그인 시 해당 페이지로 redirect 됩니다.')
                     this.router.navigate(['auth'], { queryParams: {'redirectURL': state.url } });
