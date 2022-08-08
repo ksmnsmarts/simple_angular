@@ -26,9 +26,9 @@ export class SignUpComponent implements OnInit {
 
     ngOnInit(): void {
         /*---------------------------------------------------------------------------
-        * 예제에서는 /auth path가 하나로 묶어 만들었기 때문에
-        * Guard에서 routing이 아닌
-        * sign-in, sign-up component에서 토큰 유무에 따라 routing 함.
+        *   예제에서는 /auth path가 하나로 묶어 만들었기 때문에
+        *   Guard에서 routing이 아닌
+        *   sign-in, sign-up component에서 토큰 유무에 따라 routing 함.
         ---------------------------------------------------------------------------*/
         if(this.authService.isAuthenticated()){
             this.router.navigate(['auth/user']);

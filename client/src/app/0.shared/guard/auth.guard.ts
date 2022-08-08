@@ -27,8 +27,8 @@ export class AuthGuard implements CanActivate, OnInit {
                 } else {
                     /*---------------------------------------------------------------------------
                     *           redirect
-                    * // Navigate to /results?page=1
-                    * this.router.navigate(['/results'], { queryParams: { page: 1 } });
+                    *   // Navigate to /results?page=1
+                    *   this.router.navigate(['/results'], { queryParams: { page: 1 } });
                     ---------------------------------------------------------------------------*/
                     alert('토큰 없음\n로그인 시 해당 페이지로 redirect 됩니다.')
                     this.router.navigate(['auth'], { queryParams: {'redirectURL': state.url } });
@@ -36,9 +36,9 @@ export class AuthGuard implements CanActivate, OnInit {
                 return true;
             } else {
                 /*---------------------------------------------------------------------------
-                * 이 부분에서 토큰 유무를 판단해 토큰이 있으면 해당 url로 routing 시켰으나
-                * 예제에서는 /auth path가 하나로 묶어 만들었기 때문에
-                * sign-in, sign-up component에서 토큰 유무에 따라 routing 시켰음.
+                *   이 부분에서 토큰 유무를 판단해 토큰이 있으면 해당 url로 routing 시켰으나
+                *   예제에서는 /auth path가 하나로 묶어 만들었기 때문에
+                *   sign-in, sign-up component에서 토큰 유무에 따라 routing 시켰음.
                 ---------------------------------------------------------------------------*/
                 if (routePath == 'auth') {
                     this.router.navigate(['auth/user']);

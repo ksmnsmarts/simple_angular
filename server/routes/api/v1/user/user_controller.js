@@ -13,7 +13,7 @@ exports.getUserProfile = async (req, res) => {
     }
 
     /*----------------------------------------------------------
-    *       projection
+    *           projection
     *   projection은 원하는 필드를 가져올 때 사용한다.
     *   1은 true로 선택한 필드를 가져온다. 
     *   0은 false로 선택한 필드를 제외한다.
