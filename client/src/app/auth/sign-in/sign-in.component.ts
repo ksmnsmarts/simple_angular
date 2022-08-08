@@ -29,9 +29,9 @@ export class SignInComponent implements OnInit {
 
     ngOnInit(): void {
         /*---------------------------------------------------------------------------
-        *   예제에서는 /auth path가 하나로 묶어 만들었기 때문에
-        *   Guard에서 routing이 아닌
-        *   sign-in, sign-up component에서 토큰 유무에 따라 routing 함.
+        * 예제에서는 /auth path가 하나로 묶어 만들었기 때문에
+        * Guard에서 routing이 아닌
+        * sign-in, sign-up component에서 토큰 유무에 따라 routing 함.
         ---------------------------------------------------------------------------*/
         if(this.authService.isAuthenticated()){
             this.router.navigate(['auth/user']);
@@ -39,9 +39,9 @@ export class SignInComponent implements OnInit {
 
         /*---------------------------------------------------------------------------
         *           redirect
-        *   token이 없을 때 todo List로 routing 한 경우 Guard.
-        *   Guard의  queryParams에 객체를 추가해 해당 rout path를 가지고 있으며 
-        *   singIn() 함수 실행 시 params.key 를 이용하여 해당 경로로 redirect 시킴.
+        * token이 없을 때 todo List로 routing 한 경우 Guard.
+        * Guard의  queryParams에 객체를 추가해 해당 rout path를 가지고 있으며 
+        * singIn() 함수 실행 시 params.key 를 이용하여 해당 경로로 redirect 시킴.
         ---------------------------------------------------------------------------*/
         this.route.queryParams.subscribe(params => {
             console.log(params)

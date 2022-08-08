@@ -1,7 +1,7 @@
 const { verifyToken } = require('./libraries/token');
 
 /*-------------------------------------------------
-*   Token 유효성 검증 - 토큰 유무에 따라 Api 사용 가능/불가능
+* Token 유효성 검증 - 토큰 유무에 따라 Api 사용 가능/불가능
 -------------------------------------------------*/
 exports.isAuthenticated = (req, res, next) => {
 	// 토큰 취득
