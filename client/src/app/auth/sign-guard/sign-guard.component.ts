@@ -18,24 +18,14 @@ export class SignGuardComponent implements OnInit {
     
     user;
 
-
-    todoData: any;
     selector: any;
-
-    todoForm: FormGroup;
-    
 
     constructor(
         private router: Router,
         private authService: AuthService,
         private userService: UserService,
         private dataService: DataService,
-        private fb: FormBuilder,
-        private todoService: TodoService
     ) { 
-        this.todoForm = this.fb.group({
-            todo: ['']
-        });
     }
 
     ngOnInit(): void {
@@ -71,33 +61,4 @@ export class SignGuardComponent implements OnInit {
         this.router.navigate(['/auth']);
     }
 
-
-
-    // ----------------------todo aggregate-------------------------------------
-    // 할 일 추가
-    aggregate_addTodo() {
-        const data = this.todoForm.value
-
-        this.todoService.aggregate_addTodo(data).subscribe((data: any) => {
-            if (data.message == 'success todo save') {
-                this.todoForm.reset();
-            }
-        })
-    }
-
-    // 목록 가져오기
-    aggregate_getAllTodo() {
-        this.todoService.aggregate_getAllTodo().subscribe((data: any) => {
-            console.log(data)
-            this.todoData = data
-        })
-    }
-
-    // 내 목록 가져오기
-    aggregate_getMyTodo() {
-        this.todoService.aggregate_getMyTodo().subscribe((data: any) => {
-            console.log(data)
-            this.todoData = data
-        })
-    }
 }

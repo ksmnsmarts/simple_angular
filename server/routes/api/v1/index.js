@@ -6,13 +6,11 @@ const todo = require('./todo/todo_index');
 const file = require('./file/file_index');
 const auth = require('./auth/auth_index');
 const user = require('./user/user_index');
-const aggregateTodo = require('./aggregateTodo/aggregateTodo_index');
 
 /*-----------------------------------
     API
     not needed to verify
 -----------------------------------*/
-router.use('/todo', todo);
 router.use('/file', file);
 router.use('/auth', auth);
 
@@ -29,7 +27,7 @@ router.use(isAuthenticated);
     needed to verify
 -----------------------------------*/
 router.use('/user', user);
-router.use('/aggregateTodo', aggregateTodo);
+router.use('/todo', todo);
 
 
 

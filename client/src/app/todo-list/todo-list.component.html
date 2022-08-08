@@ -5,7 +5,9 @@
         <div class="form">
             <form [formGroup]="todoForm" class="example-form">
 				<input type="text" placeholder="할 일" formControlName="todo">
-				<button type="submit" (click)="addTodo()">할일 추가</button>
+				<button type="submit" (click)="addTodo()" [disabled]="todoForm.invalid">할일 추가</button>
+                <button (click)="getAllTodo()">모든 목록 보기</button>
+                <button (click)="getMyTodo()">내 목록 보기</button>
 			</form>
         </div>
 
@@ -13,6 +15,7 @@
             --------------------------------------------------------------------------------------
             <li class="list">
                 <span style="width: 150px;">{{item.todo}} </span>
+                <span style="width: 150px;">{{item?.name}} </span>
                 <button (click)="editBtn(item._id)">수정</button>
                 <button (click)="deleteBtn(item._id)">삭제</button>
                 &nbsp;&nbsp;&nbsp;

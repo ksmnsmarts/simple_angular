@@ -11,9 +11,14 @@ export class TodoService {
     ) { }
 
 
-    // 목록 가져오기
-    getTodoList() {
-        return this.http.get('/api/v1/todo/getTodoList');
+    // 모든 목록 가져오기
+    getAllTodo() {
+        return this.http.get('/api/v1/todo/getAllTodo');
+    }
+
+    // 내 목록 가져오기
+    getMyTodo() {
+        return this.http.get('/api/v1/todo/getMyTodo');
     }
 
     // 할 일 등록
@@ -29,23 +34,5 @@ export class TodoService {
     // 할 일 삭제
     deleteTodo(data: any){
         return this.http.post('/api/v1/todo/deleteTodo', data);
-    }
-
-
-    // ----------------------todo aggregate-------------------------------------
-    // 모든 목록 가져오기
-    aggregate_getAllTodo() {
-        return this.http.get('/api/v1/aggregateTodo/aggregate_getAllTodo');
-    }
-
-    // 내 목록 가져오기
-    aggregate_getMyTodo() {
-        return this.http.get('/api/v1/aggregateTodo/aggregate_getMyTodo');
-    }
-
-    // 할 일 등록
-    aggregate_addTodo(data:any) {
-        return this.http.post('/api/v1/aggregateTodo/aggregate_addTodo', data);
-    }
-    
+    }    
 }

@@ -3,6 +3,13 @@ const bcrypt = require('bcryptjs');
 
 const todo_Schema = mongoose.Schema(
     {
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User', // 참조할 모델(collection) 명
+        },
+        name: {
+            type: String,
+        },
         todo: {
             type: String,
         },
