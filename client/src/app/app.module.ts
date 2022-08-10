@@ -23,38 +23,43 @@ import { AuthGuard } from './0.shared/guard/auth.guard';
 
 // Token
 export function tokenGetter() {
-	return localStorage.getItem(environment.tokenName);
+    return localStorage.getItem(environment.tokenName);
 }
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoListComponent,
-    FileComponent,
-    RxjsComponent,
-    SocketComponent,
-    GuardComponent,
-    GuardTestComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AuthModule,
-    JwtModule.forRoot({
-        config: {
-          tokenGetter: tokenGetter,
-          disallowedRoutes: [
-            '/api/v1/auth/sign-in',
-            '/api/v1/auth/sign-up',
-          ]
-        }
-    })
-  ],
-  providers: [LocalStorageGuard, AuthGuard],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        TodoListComponent,
+        FileComponent,
+        RxjsComponent,
+        SocketComponent,
+        GuardComponent,
+        GuardTestComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AuthModule,
+        /*------------------------------------
+        *  How to send JWT token as 'authorization' header in angular?
+        *  클라이언트의 요청이 있을 때 마다 jwt token을 인증해더로 함께 전달
+        *  https://stackoverflow.com/a/64511792
+        ------------------------------------*/
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                disallowedRoutes: [
+                    '/api/v1/auth/sign-in',
+                    '/api/v1/auth/sign-up',
+                ]
+            }
+        })
+    ],
+    providers: [LocalStorageGuard, AuthGuard],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
